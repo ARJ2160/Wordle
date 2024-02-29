@@ -22,7 +22,7 @@ function App() {
   }, []);
 
   return (
-    <div>
+    <div className="w-screen h-screen bg-black text-white flex justify-center items-center">
       {word && <Wordle solution={word} />}
       <ToastContainer autoClose={8000} />
     </div>

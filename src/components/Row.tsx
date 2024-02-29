@@ -2,14 +2,43 @@ import { FormattedGuess } from "../../types/types";
 
 interface IRow {
   index: number;
-  guess: FormattedGuess[];
+  guess?: FormattedGuess[];
+  currentGuess?: string;
 }
 
-const Row = ({ index, guess }: IRow): JSX.Element => {
-  console.log(">> HERE", index, guess);
+const Row = ({ index, guess, currentGuess }: IRow): JSX.Element => {
+  console.log(">>", currentGuess);
+  if (guess) {
+    return (
+      <div className="row past">
+        {guess.map((g, i) => (
+          <div key={i} className={g.color}>
+            {g.key}
+          </div>
+        ))}
+      </div>
+    );
+  }
+
+  if (currentGuess) {
+    let letters = currentGuess.split("");
+    console.log(">>", letters);
+    return (
+      <div className="row current">
+        {letters.map((letter, i) => (
+          <div key={i} className="filled">
+            {letter}
+          </div>
+        ))}
+        {[...Array(5 - letters.length)].map((_, i) => (
+          <div className="row" key={i}></div>
+        ))}
+      </div>
+    );
+  }
+
   return (
     <div className="row">
-      {guess?.length > 0 && <div></div>}
       <div></div>
       <div></div>
       <div></div>

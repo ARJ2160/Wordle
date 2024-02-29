@@ -4,19 +4,14 @@ import { FormattedGuess } from "../../types/types";
 export interface IGrid {
   currentGuess: string;
   guesses: FormattedGuess[][];
-  isCorrect: boolean;
   turn: number;
 }
 
-const Grid = ({
-  currentGuess,
-  guesses,
-  isCorrect,
-  turn,
-}: IGrid): JSX.Element => {
+const Grid = ({ currentGuess, guesses, turn }: IGrid): JSX.Element => {
   return (
     <div>
       {guesses.map((g, i) => {
+        if (turn === i) return <Row index={i} currentGuess={currentGuess} />;
         return <Row index={i} guess={g} />;
       })}
     </div>
