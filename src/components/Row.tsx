@@ -1,12 +1,11 @@
 import { FormattedGuess } from "../../types/types";
 
 interface IRow {
-  index: number;
   guess?: FormattedGuess[];
   currentGuess?: string;
 }
 
-const Row = ({ index, guess, currentGuess }: IRow): JSX.Element => {
+const Row = ({ guess, currentGuess }: IRow): JSX.Element => {
   console.log(">>", currentGuess);
   if (guess) {
     return (

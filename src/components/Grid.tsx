@@ -11,8 +11,8 @@ const Grid = ({ currentGuess, guesses, turn }: IGrid): JSX.Element => {
   return (
     <div>
       {guesses.map((g, i) => {
-        if (turn === i) return <Row index={i} currentGuess={currentGuess} />;
-        return <Row index={i} guess={g} />;
+        if (turn === i) return <Row currentGuess={currentGuess} />;
+        return <Row guess={g} />;
       })}
     </div>
   );
