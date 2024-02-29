@@ -6,9 +6,7 @@ import { toast } from "react-toastify";
 export const useWordle = (solution: string) => {
   const [turn, setTurn] = useState<number>(0);
   const [currentGuess, setCurrentGuess] = useState<string>("");
-  const [guesses, setGuessses] = useState<FormattedGuess[] | any>([
-    ...Array(6),
-  ]);
+  const [guesses, setGuessses] = useState<FormattedGuess[][]>([...Array(6)]);
   const [history, setHistory] = useState<string[]>([]);
   const [isCorrect, setIsCorrect] = useState<boolean>(false);
 
@@ -80,11 +78,8 @@ export const useWordle = (solution: string) => {
       }
       const formattedGuess = formatGuess(currentGuess);
       addNewGuess(formattedGuess);
-      console.log(">>", formattedGuess);
     }
   };
-
-  console.log(">>", currentGuess);
 
   return {
     turn,
